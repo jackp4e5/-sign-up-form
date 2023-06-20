@@ -85,15 +85,13 @@ const checkForm = ({ target }) => {
 };
 
 const isTheFormEmpty = () => {
-  items.forEach((item) => {
-    if (item.value === "") {
-      submit.disabled = true;
-      submit.classList.add("denied");
-    } else {
-      submit.disabled = false;
-      submit.classList.remove("denied");
-    }
-  });
+  if ([firstName, lastName, email, password].includes("")) {
+    submit.disabled = true;
+    submit.classList.add("denied");
+  } else {
+    submit.disabled = false;
+    submit.classList.remove("denied");
+  }
 };
 
 document.addEventListener("DOMContentLoaded", isTheFormEmpty);
@@ -112,7 +110,7 @@ form.addEventListener("submit", (e) => {
     eye.classList.add("hide");
   });
   submit.disabled = true;
-  submit.classList.add('denied');
+  submit.classList.add("denied");
   form.reset();
 });
 
